@@ -230,7 +230,7 @@ mkdir "${MNTPATH}/etc/NetworkManager/system-connections/"
 rm "${BOOTMNT2}/wpa_supplicant.conf" &> /dev/null
 if [ "${WPA_CONF}" != "" ]; then
   OSVER="$(sed -n 's|^VERSION=".*(\(.*\))"|\1|p' ${MNTPATH}/etc/os-release)"
-  if [ "${OSVER}" = "bookworm" ]; then
+  if [[ "${OSVER}" = "trixie" || "${OSVER}" = "bookworm" ]]; then
     cat <<EOF > "${MNTPATH}/etc/NetworkManager/system-connections/${WPA_SSID}.nmconnection"
 [connection]
 id=${WPA_SSID}
